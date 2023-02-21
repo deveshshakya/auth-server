@@ -1,5 +1,9 @@
 package com.server.auth.service.impl;
 
+import static com.server.auth.constants.AuthConstants.TOKEN_TYPE;
+import static com.server.auth.constants.ResponseConstants.FAILED;
+import static com.server.auth.constants.ResponseConstants.SUCCESS;
+
 import com.server.auth.dto.request.LogoutRequest;
 import com.server.auth.dto.request.OtpRequest;
 import com.server.auth.dto.request.OtpSubmitRequest;
@@ -19,10 +23,6 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
-
-import static com.server.auth.constants.AuthConstants.TOKEN_TYPE;
-import static com.server.auth.constants.ResponseConstants.FAILED;
-import static com.server.auth.constants.ResponseConstants.SUCCESS;
 
 @Service
 public class AuthenticationServiceImpl implements AuthenticationService {

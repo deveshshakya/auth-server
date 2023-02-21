@@ -1,12 +1,11 @@
 package com.server.auth.model;
 
+import java.io.Serial;
+import java.util.Collection;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
-
-import java.io.Serial;
-import java.util.Collection;
 
 @Getter
 @Setter

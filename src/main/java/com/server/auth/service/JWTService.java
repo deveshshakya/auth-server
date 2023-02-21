@@ -8,6 +8,13 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import jakarta.servlet.http.HttpServletRequest;
+import java.time.Duration;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
+import java.util.UUID;
+import java.util.function.Function;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -17,14 +24,6 @@ import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
-import java.time.Duration;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
-import java.util.UUID;
-import java.util.function.Function;
-
 @Service
 public class JWTService {
   private final RefreshTokenRepo refreshTokenRepo;
@@ -33,13 +32,13 @@ public class JWTService {
   @Value("${jwt.secret.key}")
   private String JWT_SECRET_KEY;
 
-  @Value("${jwt.expiry.hours}")
+  @Value("${jwt.expiry.hours}") // 24 Hrs
   private Integer JWT_EXPIRY_HOUR;
 
   @Value("${jwt.refreshToke.hours}") // 90 Days
   private Integer JWT_REFRESH_TOKEN_HOUR;
 
-  @Value("${jwt.blacklist.duration.days}")
+  @Value("${jwt.blacklist.duration.days}") // 1 Day
   private Integer BLACKLIST_TOKEN_DURATION_DAYS;
 
   @Autowired

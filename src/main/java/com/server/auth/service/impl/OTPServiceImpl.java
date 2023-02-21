@@ -1,9 +1,15 @@
 package com.server.auth.service.impl;
 
+import static com.server.auth.constants.ResponseConstants.FAILED;
+import static com.server.auth.constants.ResponseConstants.SUCCESS;
+
 import com.server.auth.dto.request.OtpRequest;
 import com.server.auth.dto.request.OtpSubmitRequest;
 import com.server.auth.dto.response.Response;
 import com.server.auth.service.OTPService;
+import java.time.Duration;
+import java.util.Collections;
+import java.util.Map;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,19 +19,13 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Service;
 
-import java.time.Duration;
-import java.util.Collections;
-import java.util.Map;
-
-import static com.server.auth.constants.ResponseConstants.FAILED;
-import static com.server.auth.constants.ResponseConstants.SUCCESS;
-
 @Service
 public class OTPServiceImpl implements OTPService {
 
   private final Logger logger = LoggerFactory.getLogger(OTPServiceImpl.class);
 
   private final ValueOperations<String, String> stringValueOperations;
+  private final String OTP_BY_MOBILE = "otpByMobile";
 
   @Autowired
   OTPServiceImpl(
@@ -88,7 +88,6 @@ public class OTPServiceImpl implements OTPService {
   }
 
   private String getOtpByMobileKey(String mobileNumber) {
-    String OTP_BY_MOBILE = "otpByMobile";
-    return OTP_BY_MOBILE + "_" + mobileNumber;
+    return this.OTP_BY_MOBILE + "_" + mobileNumber;
   }
 }

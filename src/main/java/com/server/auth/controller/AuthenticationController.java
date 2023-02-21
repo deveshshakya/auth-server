@@ -1,5 +1,11 @@
 package com.server.auth.controller;
 
+import static com.server.auth.constants.ResponseConstants.FAILED;
+import static com.server.auth.constants.ResponseConstants.SUCCESS;
+import static org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR;
+import static org.springframework.http.HttpStatus.OK;
+import static org.springframework.http.HttpStatus.UNAUTHORIZED;
+
 import com.server.auth.dto.request.LogoutRequest;
 import com.server.auth.dto.request.OtpRequest;
 import com.server.auth.dto.request.OtpSubmitRequest;
@@ -22,12 +28,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import static com.server.auth.constants.ResponseConstants.FAILED;
-import static com.server.auth.constants.ResponseConstants.SUCCESS;
-import static org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR;
-import static org.springframework.http.HttpStatus.OK;
-import static org.springframework.http.HttpStatus.UNAUTHORIZED;
 
 @RestController
 @RequestMapping("/auth")

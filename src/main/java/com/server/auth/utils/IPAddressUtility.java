@@ -1,10 +1,9 @@
 package com.server.auth.utils;
 
 import jakarta.servlet.http.HttpServletRequest;
-import org.apache.commons.lang3.StringUtils;
-
 import java.net.Inet4Address;
 import java.net.UnknownHostException;
+import org.apache.commons.lang3.StringUtils;
 
 public class IPAddressUtility {
   public static boolean isValidInet4Address(String ip) {
